@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Awesome Books Library</title>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Awesome Books</h1>
+
+        <div id="bookshelf">
+            <template class="book">
+                <p>Book Title</p>
+                <p>Book Author</p>
+                <button class="btn btn-primary">Remove</button>
+            <hr>
+            </template>
+        </div>
+    </div>
+    <br>
+    <h1>Add New Book</h1>
+    <div class="container" >
+        <div class="row-sections">
+            <div class="col-section"></div>
+            <div class="sub-col-section">
+                <form action="submit" onsubmit="return AddBook()" id="AddBook">
+                    <input class="form-control"  type="text" name="title" placeholder="Title of the book..." required="">
+                    <br>
+                    <input class="form-control" type="text" name="author" placeholder="Author of the book..." required="">
+                    <br>
+                    <button class="add-button" type="submit">Add book</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
