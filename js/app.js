@@ -1,16 +1,72 @@
-const newBookTitle = document.getElementById('newBookTitle');
-const newBookAuthor = document.getElementById('newBookAuthor');
-let bookCollection = [];
+let library = [];
 
-function addBook() {
-  const newBook = { title: newBookTitle.value, author: newBookAuthor.value };
-  bookCollection.push(newBook);
+const temp = document.querySelector('.book');
+const bookshelf = document.querySelector('#bookshelf');
+let idBook = library.length;
+
+function Book(title, author) {
+  this.id = idBook;
+  this.title = title;
+  this.author = author;
+
+  idBook += 1;
 }
 
-function removeBook(bookId) {
-  const updatedCollection = bookCollection.filter((book, index, arr) => arr[index] !== arr[bookId]);
-  bookCollection = updatedCollection;
+function ReloadLibrary() {
+  library = JSON.parse(localStorage.library);
+
+  bookshelf.innerHTML = '';
+  bookshelf.appendChild(temp);
+
+  for (let i = 0; i < library.length; i += 1) {
+    DisplayBook(library[i]);
+  }
 }
 
-addBook();
-removeBook(1);
+function SaveBook(title, author) {
+  const book = new Book(title, author);
+  if (!Array.isArray(library)) {
+    library = [];
+  }
+  library.push(book);
+
+  localStorage.library = JSON.stringify(library);
+
+  ReloadLibrary();
+}
+
+function AddBook() {
+
+  event.preventDefault();
+
+  const formAddBook = document.forms.AddBook;
+  const bookData = new FormData(formAddBook);
+
+  const bookTitle = bookData.get('title');
+  const bookAuthor = bookData.get('author');
+
+  formAddBook.reset();
+
+  SaveBook(bookTitle, bookAuthor);
+}
+
+function DeleteBook(id) {
+  library = library.filter((book) => book.id !== id);
+
+  localStorage.library = JSON.stringify(library);
+
+  ReloadLibrary();
+}
+
+function DisplayBook(book) {
+  const clon = temp.content.cloneNode(true);
+  clon.querySelectorAll('p')[0].innerHTML = 'BOOK NAME: '+book.title;
+  clon.querySelectorAll('p')[1].innerHTML = 'AUTHOR NAME: '+book.author;
+
+  clon.querySelector('button').addEventListener('click', () => { DeleteBook(book.id); });
+
+  bookshelf.appendChild(clon);
+}
+
+ReloadLibrary();
+
