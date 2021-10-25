@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define, no-unused-vars, no-restricted-globals */
 let library = [];
 
 const temp = document.querySelector('.book');
@@ -23,6 +24,24 @@ function ReloadLibrary() {
   }
 }
 
+function DeleteBook(id) {
+  library = library.filter((book) => book.id !== id);
+
+  localStorage.library = JSON.stringify(library);
+
+  ReloadLibrary();
+}
+
+function DisplayBook(book) {
+  const clon = temp.content.cloneNode(true);
+  clon.querySelectorAll('p')[0].innerHTML = `BOOK NAME: ${book.title}`;
+  clon.querySelectorAll('p')[1].innerHTML = `AUTHOR NAME: ${book.author}`;
+
+  clon.querySelector('button').addEventListener('click', () => { DeleteBook(book.id); });
+
+  bookshelf.appendChild(clon);
+}
+
 function SaveBook(title, author) {
   const book = new Book(title, author);
   if (!Array.isArray(library)) {
@@ -36,7 +55,6 @@ function SaveBook(title, author) {
 }
 
 function AddBook() {
-
   event.preventDefault();
 
   const formAddBook = document.forms.AddBook;
@@ -50,23 +68,5 @@ function AddBook() {
   SaveBook(bookTitle, bookAuthor);
 }
 
-function DeleteBook(id) {
-  library = library.filter((book) => book.id !== id);
-
-  localStorage.library = JSON.stringify(library);
-
-  ReloadLibrary();
-}
-
-function DisplayBook(book) {
-  const clon = temp.content.cloneNode(true);
-  clon.querySelectorAll('p')[0].innerHTML = 'BOOK NAME: '+book.title;
-  clon.querySelectorAll('p')[1].innerHTML = 'AUTHOR NAME: '+book.author;
-
-  clon.querySelector('button').addEventListener('click', () => { DeleteBook(book.id); });
-
-  bookshelf.appendChild(clon);
-}
-
 ReloadLibrary();
-
+/* eslint-enable no-use-before-define, no-unused-vars, no-restricted-globals */
