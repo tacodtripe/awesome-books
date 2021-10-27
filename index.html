@@ -24,12 +24,12 @@
         <div class="row-sections">
             <div class="col-section"></div>
             <div class="sub-col-section">
-                <form action="submit" onsubmit="return AddBook()" id="AddBook">
-                    <input class="form-control"  type="text" name="title" placeholder="Title of the book..." required="">
+                <form>
+                    <input class="form-control"  type="text" name="title" placeholder="Title of the book..." required="" id="newBookTitle">
                     <br>
-                    <input class="form-control" type="text" name="author" placeholder="Author of the book..." required="">
+                    <input class="form-control" type="text" name="author" placeholder="Author of the book..." required="" id="newBookAuthor">
                     <br>
-                    <button class="add-button" type="submit">Add book</button>
+                    <button class="add-button" type="submit" id="addButton">Add book</button>
                 </form>
             </div>
             <div class="col"></div>

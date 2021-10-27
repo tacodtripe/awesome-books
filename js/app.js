@@ -1,147 +1,56 @@
-/* eslint-disable no-use-before-define, no-unused-vars, no-restricted-globals */
+/* eslint-disable no-use-before-define, no-unused-vars, no-restricted-globals, class-methods-use-this, max-len */
 
-class Book {
+class Bookstore {
   constructor(title, author) {
-    this.id = idBook;
     this.title = title;
     this.author = author;
-  
-    idBook += 1;
   }
 
-  ReloadLibrary=() => {
-    library = JSON.parse(localStorage.library);
-  
+  reloadLibrary(library) {
     bookshelf.innerHTML = '';
     bookshelf.appendChild(temp);
-  
+
     for (let i = 0; i < library.length; i += 1) {
-      BookDisplay.DisplayBook(library[i]);
+      newBookCollection.displayBook(library[i], i);
     }
   }
 
-  AddBook=() => {
-    event.preventDefault();
-  
-    const formAddBook = document.forms.AddBook;
-    const bookData = new FormData(formAddBook);
-  
-    const bookTitle = bookData.get('title');
-    const bookAuthor = bookData.get('author');
-  
-    formAddBook.reset();
-  
-    SaveBook(bookTitle, bookAuthor);
-    ReloadLibrary();
-  }
-
-  SaveBook=(title, author) => {
-    const book = new Book(title, author);
-    if (!Array.isArray(library)) {
-      library = [];
-    }
+  saveBook(title, author, library) {
+    const book = new Bookstore(title, author);
     library.push(book);
-  
     localStorage.library = JSON.stringify(library);
-  
-    ReloadLibrary();
+    newBookCollection.reloadLibrary(library);
   }
 
-  DeleteBook=(id) => {
-    library = library.filter((book) => book.id !== id);
-  
+  deleteBook(id) {
+    library = library.filter((book, index, arr) => arr[index] !== arr[id]);
     localStorage.library = JSON.stringify(library);
-  
-    ReloadLibrary();
+    newBookCollection.reloadLibrary(library);
   }
-}
 
-
-class BookDisplay {
-  library = [];
-
-  DisplayBook=(book) => {
+  displayBook(book, bookId) {
     const clon = temp.content.cloneNode(true);
     clon.querySelectorAll('p')[0].innerHTML = `BOOK NAME: ${book.title}`;
     clon.querySelectorAll('p')[1].innerHTML = `AUTHOR NAME: ${book.author}`;
-  
-    clon.querySelector('button').addEventListener('click', () => { Book.DeleteBook(book.id); });
-  
+    clon.querySelector('button').addEventListener('click', () => { newBookCollection.deleteBook(bookId); });
     bookshelf.appendChild(clon);
+  }
+
+  addBook() {
+    const bookTitle = document.getElementById('newBookTitle').value;
+    const bookAuthor = document.getElementById('newBookAuthor').value;
+    newBookCollection.saveBook(bookTitle, bookAuthor, library);
   }
 }
 
-
-
-// let library = [];
-const library = new BookDisplay();
-
+if (!localStorage.getItem('library')) {
+  const library = localStorage.setItem('library', JSON.stringify([]));
+}
+let library = JSON.parse(localStorage.library);
+const addButton = document.getElementById('addButton');
 const temp = document.querySelector('.book');
 const bookshelf = document.querySelector('#bookshelf');
-let idBook = library.length;
-
-// function Book(title, author) {
-//   this.id = idBook;
-//   this.title = title;
-//   this.author = author;
-
-//   idBook += 1;
-// }
-
-// function ReloadLibrary() {
-//   library = JSON.parse(localStorage.library);
-
-//   bookshelf.innerHTML = '';
-//   bookshelf.appendChild(temp);
-
-//   for (let i = 0; i < library.length; i += 1) {
-//     DisplayBook(library[i]);
-//   }
-// }
-
-// function DeleteBook(id) {
-//   library = library.filter((book) => book.id !== id);
-
-//   localStorage.library = JSON.stringify(library);
-
-//   ReloadLibrary();
-// }
-
-// function DisplayBook(book) {
-//   const clon = temp.content.cloneNode(true);
-//   clon.querySelectorAll('p')[0].innerHTML = `BOOK NAME: ${book.title}`;
-//   clon.querySelectorAll('p')[1].innerHTML = `AUTHOR NAME: ${book.author}`;
-
-//   clon.querySelector('button').addEventListener('click', () => { DeleteBook(book.id); });
-
-//   bookshelf.appendChild(clon);
-// }
-
-// function SaveBook(title, author) {
-//   const book = new Book(title, author);
-//   if (!Array.isArray(library)) {
-//     library = [];
-//   }
-//   library.push(book);
-
-//   localStorage.library = JSON.stringify(library);
-
-//   ReloadLibrary();
-// }
-
-// function AddBook() {
-//   event.preventDefault();
-
-//   const formAddBook = document.forms.AddBook;
-//   const bookData = new FormData(formAddBook);
-
-//   const bookTitle = bookData.get('title');
-//   const bookAuthor = bookData.get('author');
-
-//   formAddBook.reset();
-
-//   SaveBook(bookTitle, bookAuthor);
-// }
-
-
-/* eslint-enable no-use-before-define, no-unused-vars, no-restricted-globals */
+const newBookCollection = new Bookstore();
+addButton.addEventListener('click', newBookCollection.addBook);
+newBookCollection.reloadLibrary(library);
+/* eslint-enable no-use-before-define, no-unused-vars, no-restricted-globals, class-methods-use-this */
