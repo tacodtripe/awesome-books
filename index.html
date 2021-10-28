@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css">
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!-- jQuery library -->
@@ -12,19 +11,21 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <title>Awesome Books Library</title>
 </head>
 <body>
-    <div class="jumbotron text-center">
-        <h1 class="text-center">Awesome Books</h1>
+    <h1 class="text-center">All Awesome Books</h1>
+    <div class="container jumbotron text-center">
         <div id="bookshelf">
             <template class="book">
                 <div class="book-title mb-0">
-                <p></p>
-                <button class="btn btn-dark">Remove</button>
+                    <p class='books'></p>
+                    <button class="btn btn-light border-dark">Remove</button>
                 </div>
-                
-            <hr>
             </template>
         </div>
     </div>

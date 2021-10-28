@@ -1,18 +1,33 @@
 * {
-  padding: 0;
-  margin: 10px;
+  font-family: 'Varela Round', sans-serif !important;
 }
 
 body {
-	background-color: #428CC4;
-	text-align: center;
+  text-align: center;
 }
 
 .jumbotron {
-  border: 1px solid black;
+  border: 5px solid black;
 }
 
 .book-title {
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+}
+
+.book-title:nth-of-type(even) {
   display: flex;
   justify-content: space-between;
+  background-color: #d3d3d3;
+}
+
+.book-title:nth-of-type(odd) {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+}
+
+.book-title:last-child {
+  border-bottom: 3px solid black;
 }
