@@ -8,12 +8,11 @@ body {
 
 .jumbotron {
   border: 5px solid black;
+  padding: 0;
 }
 
 .book-title {
-  border-top: 3px solid black;
-  border-left: 3px solid black;
-  border-right: 3px solid black;
+  padding: 10px;
 }
 
 .book-title:nth-of-type(even) {
@@ -28,6 +27,6 @@ body {
   background-color: #f5f5f5;
 }
 
-.book-title:last-child {
-  border-bottom: 3px solid black;
+.remove {
+  box-shadow: 5px 5px black;
 }
