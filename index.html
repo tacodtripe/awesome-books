@@ -23,16 +23,17 @@
       <div class="main-nav d-flex">
         <p class="logo nav-text">Awesome Books</p>
         <ul class="nav-list d-flex nav-text">
-          <li class="d-flex"><a href="#" id="listNav">List</a></li>
-          <li class="d-flex"><a href="#" id="addNav">Add new</a></li>
-          <li class="d-flex"><a href="#" id="contactNav">Contact</a></li>
+          <li class="d-flex"><a href="#" id="listSectionLink">List</a></li>
+          <li class="d-flex"><a href="#" id="addNewSectionLink">Add new</a></li>
+          <li class="d-flex"><a href="#" id="contactSectionLink">Contact</a></li>
         </ul>
       </div>
       <div class="time-nav d-flex text-color">
         <p id="date-time">Time</p>
       </div>
     </nav>
-  </header>    
+  </header>
+  <section id="listSection">
     <h1 class="text-center">All Awesome Books</h1>
     <div class="container jumbotron text-center">
         <div id="bookshelf">
@@ -44,28 +45,32 @@
             </template>
         </div>
     </div>
-    <br>
+  </section>
+  <section class="hidden" id="addNewSection">
     <div class="container text-right">
-        <div class="line"></div>
-        <h1 class="title-add text-center">Add a New Book</h1>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <form>
-                    <input class="form-control border-dark"  type="text" name="title" placeholder="Title" required="" id="newBookTitle">
-                    <br>
-                    <input class="form-control border-dark" type="text" name="author" placeholder="Author" required="" id="newBookAuthor">
-                    <br>
-                    <button class="remove add-button btn btn-light border-dark" type="submit" id="addButton">Add book</button>
-                </form>
-            </div>
-            <div class="col"></div>
-        </div>
-    </div>
+      <h1 class="title-add text-center">Add a New Book</h1>
+      <div class="row">
+          <div class="col">
+              <form>
+                  <input class="form-control border-dark"  type="text" name="title" placeholder="Title" required="" id="newBookTitle">
+                  <br>
+                  <input class="form-control border-dark" type="text" name="author" placeholder="Author" required="" id="newBookAuthor">
+                  <br>
+                  <button class="remove add-button btn btn-light border-dark" type="submit" id="addButton">Add book</button>
+              </form>
+          </div>
+      </div>
+  </div>
+  </section>
+  <section class="hidden" id="contactSection">
+    <h1>Contact Information</h1>
+  </section>
+
   <footer class="footer">
     <small>&copy;Copyright</small>
   </footer>    
   <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
