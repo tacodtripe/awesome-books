@@ -2,3 +2,17 @@
   padding: 0;
   margin: 10px;
 }
+
+body {
+	background-color: #428CC4;
+	text-align: center;
+}
+
+.jumbotron {
+  border: 1px solid black;
+}
+
+.book-title {
+  display: flex;
+  justify-content: space-between;
+}

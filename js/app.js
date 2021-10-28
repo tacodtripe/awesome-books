@@ -30,8 +30,7 @@ class Bookstore {
 
   displayBook(book, bookId) {
     const clon = temp.content.cloneNode(true);
-    clon.querySelectorAll('p')[0].innerHTML = `BOOK NAME: ${book.title}`;
-    clon.querySelectorAll('p')[1].innerHTML = `AUTHOR NAME: ${book.author}`;
+    clon.querySelectorAll('p')[0].innerHTML = `"${book.title}" by ` + `${book.author}`;
     clon.querySelector('button').addEventListener('click', () => { newBookCollection.deleteBook(bookId); });
     bookshelf.appendChild(clon);
   }
