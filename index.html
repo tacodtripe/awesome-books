@@ -3,38 +3,53 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
     <title>Awesome Books Library</title>
 </head>
 <body>
-    <div class="main-container">
-        <h1>Awesome Books</h1>
+    <h1 class="text-center">All Awesome Books</h1>
+    <div class="container jumbotron text-center">
         <div id="bookshelf">
             <template class="book">
-                <p>Book Title</p>
-                <p>Book Author</p>
-                <button class="btn btn-primary">Remove</button>
-            <hr>
+                <div class="book-title mb-0">
+                    <p class='books'></p>
+                    <button class="remove btn btn-light border-dark">Remove</button>
+                </div>
             </template>
         </div>
     </div>
     <br>
-    <h1 class="title-add">Add New Book</h1>
-    <div class="container" >
-        <div class="row-sections">
-            <div class="col-section"></div>
-            <div class="sub-col-section">
+    
+    
+    <div class="container text-right">
+        <div class="line"></div>
+        <h1 class="title-add text-center">Add a New Book</h1>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
                 <form>
-                    <input class="form-control"  type="text" name="title" placeholder="Title of the book..." required="" id="newBookTitle">
+                    <input class="form-control border-dark"  type="text" name="title" placeholder="Title" required="" id="newBookTitle">
                     <br>
-                    <input class="form-control" type="text" name="author" placeholder="Author of the book..." required="" id="newBookAuthor">
+                    <input class="form-control border-dark" type="text" name="author" placeholder="Author" required="" id="newBookAuthor">
                     <br>
-                    <button class="add-button" type="submit" id="addButton">Add book</button>
+                    <button class="remove add-button btn btn-light border-dark" type="submit" id="addButton">Add book</button>
                 </form>
             </div>
             <div class="col"></div>
         </div>
     </div>
   <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
