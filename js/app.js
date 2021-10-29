@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define, no-unused-vars, no-restricted-globals, class-methods-use-this, max-len */
+/* eslint-disable no-use-before-define, no-unused-vars, no-restricted-globals, class-methods-use-this, max-len, no-undef */
 
 class Bookstore {
   constructor(title, author) {
@@ -50,6 +50,9 @@ const addButton = document.getElementById('addButton');
 const temp = document.querySelector('.book');
 const bookshelf = document.querySelector('#bookshelf');
 const newBookCollection = new Bookstore();
+const { DateTime } = luxon;
+const dt = DateTime.now();
+document.getElementById('dateTime').innerHTML = `Today is ${dt.toLocaleString(DateTime.DATETIME_MED)}`;
 addButton.addEventListener('click', newBookCollection.addBook);
 newBookCollection.reloadLibrary(library);
-/* eslint-enable no-use-before-define, no-unused-vars, no-restricted-globals, class-methods-use-this */
+/* eslint-enable no-use-before-define, no-unused-vars, no-restricted-globals, class-methods-use-this, no-undef */
